@@ -646,24 +646,45 @@
 				</div>
 
 				<div class="col-md-7 mb-5 mb-md-0">
-					<form action="" class="site-form">
+					<form action="api/send-mail.php" class="site-form" method="POST">
 						<h3 class="mb-5">Get In Touch</h3>
 						<div class="form-group">
-							<input type="text" class="form-control px-3 py-4" placeholder="Your Name">
+							<input type="text" class="form-control px-3 py-4" name="name" placeholder="Your Name"
+								required>
 						</div>
 						<div class="form-group">
-							<input type="email" class="form-control px-3 py-4" placeholder="Your Email">
+							<input type="email" class="form-control px-3 py-4" name="email" placeholder="Your Email"
+								required>
 						</div>
 						<div class="form-group">
-							<input type="email" class="form-control px-3 py-4" placeholder="Your Phone">
+							<input type="text" class="form-control px-3 py-4" name="subject" placeholder="Your Subject"
+								required>
+						</div>
+						<div class="form-group">
+							<input type="tel" class="form-control px-3 py-4" name="phone" placeholder="Your Phone"
+								required>
 						</div>
 						<div class="form-group mb-5">
-							<textarea class="form-control px-3 py-4" cols="30" rows="10"
+							<textarea class="form-control px-3 py-4" cols="30" rows="5" name="message" required
 								placeholder="Write a Message"></textarea>
 						</div>
-						<div class="form-group">
+						<div class="form-group" id="send">
 							<input type="submit" class="btn btn-primary  px-4 py-3" value="Send Message">
 						</div>
+						<script>
+							const url = window.location.href;
+							const captured = /message=([^&]+)/.exec(url)[1]; // Value is in [1] ('384' in our case)
+							const result = captured ? captured : undefined;
+
+							if (result) {
+								const elem = document.createElement('div');
+								elem.innerText = result.replace('%20', ' ');
+								elem.classList.add('alert', 'alert-info');
+								const target = document.querySelector('#send');
+								target.parentNode.insertBefore(elem, target);
+							}
+
+						</script>
 					</form>
 				</div>
 				<div class="col-md-5 pl-md-5">
@@ -675,11 +696,19 @@
 						</li>
 						<li>
 							<span class="text-uppercase">Phone</span>
-							+54 291 5279 200
+							+54 291 52 79 200
 						</li>
 						<li>
 							<span class="text-uppercase">Address</span>
 							Bahía Blanca, Argentina
+						</li>
+						<li>
+							<span class="text-uppercase">LinkedIn</span>
+							<a href="https://linkedin.com/in/gergomez" target="_blank">linkedin.com/in/gergomez</a>
+						</li>
+						<li>
+							<span class="text-uppercase">Github</span>
+							<a href="https://github.com/xeronweb"  target="_blank">github.com/xeronweb</a>
 						</li>
 					</ul>
 				</div>
@@ -738,7 +767,7 @@
 		function sleep(ms) {
 			return new Promise(resolve => setTimeout(resolve, ms));
 		}
-		async function doalgo(){
+		async function doalgo() {
 			await sleep(2000);
 			document.getElementById("all-portfolio").click();
 		}

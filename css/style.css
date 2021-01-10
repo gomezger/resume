@@ -100,6 +100,9 @@ a:active {
   background: transparent !important;
 }
 
+.site-navbar.scrolled.bg-light {
+  background: #fff !important;
+}
 @media (max-width: 991.98px) {
   .site-navbar.bg-light {
     background: rgba(255, 255, 255, 0) !important;
@@ -129,6 +132,10 @@ a:active {
   .navbar-collapse{
     background-color: white !important;
     margin-top: 15px;
+  }
+  
+  .site-navbar.scrolled.bg-light {
+    background: unset !important;
   }
 
 }
@@ -167,9 +174,6 @@ a:active {
   transform         : translateY(0%);
 }
 
-.site-navbar.scrolled.bg-light {
-  /* background: #fff !important; */
-}
 
 .site-navbar.scrolled .navbar-brand {
   display  : inline-block;
@@ -781,6 +785,7 @@ a:active {
 .form-control:active,
 .form-control:focus {
   background: #404040;
+  color: #fff;
 }
 
 .form-control::-webkit-input-placeholder {
